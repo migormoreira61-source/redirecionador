@@ -1,0 +1,47 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Redirecionando...</title>
+
+    <script>
+        // Username do seu bot
+        const BOT_USERNAME = "SuporteVIPrsbot";
+
+        // Pega a origem da URL
+        const params = new URLSearchParams(window.location.search);
+
+        // Se não houver "ref", considera Twitter
+        const ref = params.get("ref") || "twitter";
+
+        // Mantém apenas caracteres seguros
+        const codigo = ref.replace(/[^a-zA-Z0-9_-]/g, "");
+
+        // Cria o link do Telegram
+        const telegramURL =
+            "https://t.me/" +
+            BOT_USERNAME +
+            "?start=" +
+            encodeURIComponent(codigo);
+
+        // Redireciona
+        window.location.replace(telegramURL);
+    </script>
+</head>
+
+<body>
+    <p>Redirecionando para o Telegram...</p>
+
+    <noscript>
+        <p>
+            <a href="https://t.me/SuporteVIPrsbot?start=twitter">
+                Clique aqui para abrir o Telegram
+            </a>
+        </p>
+    </noscript>
+</body>
+</html>
+```
